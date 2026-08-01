@@ -3,3 +3,26 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+html, body {
+	width: 100vw;
+	min-height: 100vh;
+	position: relative;
+}
+
+@font-face {
+	font-family: 'RobotoMono-Regular';
+	src: url(fonts/RobotoMono-Regular.ttf);
+}
+@font-face {
+	font-family: 'RobotoMono-Medium';
+	src: url(fonts/RobotoMono-Medium.ttf);
+}
+@font-face {
+	font-family: 'RobotoMono-SemiBold';
+	src: url(fonts/RobotoMono-SemiBold.ttf);
+}
+@font-face {
+	font-family: 'RobotoMono-Bold';
+	src: url(fonts/RobotoMono-Bold.ttf);
+}
