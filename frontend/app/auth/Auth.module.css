@@ -1,0 +1,69 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #141414;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.group {
+    width: 400px;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.logo {
+    margin-left: 8px;
+    width: 48px;
+    height: auto;
+}
+.wrapper {
+    border-radius: 24px;
+    padding: 8px 8px 0 8px;
+    background-color: #000000;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.form {
+    padding: 16px;
+    border-radius: 16px;
+    gap: 16px;
+    background-color: #141414;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    gap: 4px;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    font-size: 24px;
+    color: #FFFFFF;
+    font-family: 'Inter-SemiBold';
+}
+.caption {
+    font-size: 16px;
+    color: #CCCCCC;
+    font-family: 'Inter-Medium';
+}
+
+.toggleText {
+    padding: 16px 0;
+    gap: 4px;
+    font-size: 16px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Inter-Medium';
+}
+.toggle {
+    text-decoration: solid underline #FFFFFF 1px;
+}
+.toggle:hover {
+    cursor: pointer;
+}

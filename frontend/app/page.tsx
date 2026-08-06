@@ -1,4 +1,4 @@
-import Placeholder from './components/Placeholder/Placeholder';
+import Placeholder from './components/additional/Placeholder/Placeholder';
 
 export default function Home() {
 	return (

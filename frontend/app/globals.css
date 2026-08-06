@@ -11,18 +11,18 @@ html, body {
 }
 
 @font-face {
-	font-family: 'RobotoMono-Regular';
-	src: url(fonts/RobotoMono-Regular.ttf);
+	font-family: 'Inter-Regular';
+	src: url(fonts/Inter_18pt-Regular.ttf);
 }
 @font-face {
-	font-family: 'RobotoMono-Medium';
-	src: url(fonts/RobotoMono-Medium.ttf);
+	font-family: 'Inter-Medium';
+	src: url(fonts/Inter_18pt-Medium.ttf);
 }
 @font-face {
-	font-family: 'RobotoMono-SemiBold';
-	src: url(fonts/RobotoMono-SemiBold.ttf);
+	font-family: 'Inter-SemiBold';
+	src: url(fonts/Inter_18pt-SemiBold.ttf);
 }
 @font-face {
-	font-family: 'RobotoMono-Bold';
-	src: url(fonts/RobotoMono-Bold.ttf);
+	font-family: 'Inter-Bold';
+	src: url(fonts/Inter_18pt-Bold.ttf);
 }
