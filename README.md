@@ -1,9 +1,16 @@
 # Stargem
-Multi-agent development system
+Мультиагентная система для разработки
 ## Frontend
-Working on React + TS + NextJS
+Работает на React + TS + NextJS
 ```cmd
 npm install
 cd frontend
 npm run dev
 ```
+TO DO
+- Подготовить компонент пароля для формы регистрации.
+- Написать компонент для двойного ввода паролей.
+- Написать компонент имени для формы регистрации.
+- Продумать magic-link для верификации аккаунта.
+
+Пока логика такая, что конец регистрации будет в редиректе с magic-link.
