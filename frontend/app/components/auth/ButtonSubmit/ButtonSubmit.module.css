@@ -1,0 +1,36 @@
+.group {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: .2s;
+    background: linear-gradient(0deg,
+        rgba(6, 22, 255, 1) 0%,
+        rgba(97, 108, 255, 1) 100%
+    );
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    font-family: 'Inter-Medium';
+}
+.submit:hover {
+    cursor: pointer;
+}
+
+.disabled {
+    filter: grayscale(100%);
+}
+.disabled:hover {
+    cursor: not-allowed;
+}
+
+.error {
+    font-size: 16px;
+    color: #FF2C2C;
+    font-family: 'Inter-Medium';
+}

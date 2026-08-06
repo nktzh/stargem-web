@@ -3,17 +3,22 @@
 import styles from './Auth.module.css';
 import InputEmail from '../components/auth/InputEmail/InputEmail';
 import InputPassword from '../components/auth/InputPassword/InputPassword';
+import ButtonSubmit from '../components/auth/ButtonSubmit/ButtonSubmit';
 import { useState, useEffect } from 'react';
 
 export default function Auth() {
+    const [isLogin, setIsLogin] = useState(true);
     const [emailValue, setEmailValue] = useState<string | null>(null);
     const [passwordValue, setPasswordValue] = useState<string | null>(null);
+    const [disabledStatus, setDisabledStatus] = useState(true);
 
-    /*
     useEffect(() => {
-        console.log(`${emailValue} ${passwordValue}`);
+        if (emailValue && passwordValue) {
+            setDisabledStatus(false);
+        } else {
+            setDisabledStatus(true);
+        }
     }, [emailValue, passwordValue]);
-    */
 
     return (
         <div className={styles.container}>
@@ -26,15 +31,48 @@ export default function Auth() {
                 <div className={styles.wrapper}>
                     <div className={styles.form}>
                         <div className={styles.header}>
-                            <div className={styles.title}>Вход</div>
-                            <div className={styles.caption}>Рады видеть Вас снова.</div>
+                            <div className={styles.title}>
+                                {
+                                    isLogin
+                                    ? 'Вход'
+                                    : 'Регистрация'
+                                }
+                            </div>
+                            <div className={styles.caption}>
+                                {
+                                    isLogin
+                                    ? 'Рады видеть Вас снова.'
+                                    : 'Добро пожаловать в Stargem!'
+                                }
+                            </div>
                         </div>
                         <InputEmail setEmailValue={setEmailValue} />
                         <InputPassword setPasswordValue={setPasswordValue} />
+                        <ButtonSubmit
+                            disabled={disabledStatus}
+                            text={
+                                isLogin
+                                ? 'Войти'
+                                : 'Зарегистрироваться'
+                            }
+                        />
                     </div>
                     <div className={styles.toggleText}>
-                        Нет аккаунта?
-                        <span className={styles.toggle}>Зарегистрируйтесь</span>
+                        {
+                            isLogin
+                            ? 'Нет аккаунта?'
+                            : 'Уже есть аккаунт?'
+                        }
+                        <span
+                            className={styles.toggle}
+                            onClick={() => setIsLogin(!isLogin)}
+                        >
+                            {
+                                isLogin
+                                ? 'Зарегистрируйтесь'
+                                : 'Вход здесь'
+                            }
+                        </span>
                     </div>
                 </div>
             </div>
