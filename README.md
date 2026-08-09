@@ -3,7 +3,7 @@
 ## Frontend
 Работает на React + TS + NextJS
 ```cmd
-npm install
+pnpm install
 cd frontend
 npm run dev
 ```

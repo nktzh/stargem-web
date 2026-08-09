@@ -4,6 +4,7 @@ import styles from './Auth.module.css';
 import InputEmail from '../components/auth/InputEmail/InputEmail';
 import InputPassword from '../components/auth/InputPassword/InputPassword';
 import ButtonSubmit from '../components/auth/ButtonSubmit/ButtonSubmit';
+import SlideUp from '../components/animations/auth/SlideUp/SlideUp';
 import { useState, useEffect } from 'react';
 
 export default function Auth() {
@@ -39,15 +40,22 @@ export default function Auth() {
                                 }
                             </div>
                             <div className={styles.caption}>
-                                {
-                                    isLogin
-                                    ? 'Рады видеть Вас снова.'
-                                    : 'Добро пожаловать в Stargem!'
-                                }
+                                <SlideUp
+                                    key={isLogin ? 'login' : 'register'}
+                                    duration='0.2s'
+                                >
+                                    {isLogin ? 'Рады видеть Вас снова.' : 'Добро пожаловать в Stargem!'}
+                                </SlideUp>
                             </div>
                         </div>
-                        <InputEmail setEmailValue={setEmailValue} />
-                        <InputPassword setPasswordValue={setPasswordValue} />
+                        <InputEmail
+                            setEmailValue={setEmailValue}
+                            duration='0.4s'
+                        />
+                        <InputPassword
+                            setPasswordValue={setPasswordValue}
+                            duration='0.6s'
+                        />
                         <ButtonSubmit
                             disabled={disabledStatus}
                             text={
@@ -55,6 +63,7 @@ export default function Auth() {
                                 ? 'Войти'
                                 : 'Зарегистрироваться'
                             }
+                            duration='0.8s'
                         />
                     </div>
                     <div className={styles.toggleText}>

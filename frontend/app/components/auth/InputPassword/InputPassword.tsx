@@ -1,15 +1,17 @@
 'use client';
 
 import styles from './InputPassword.module.css';
+import SlideUp from '../../animations/auth/SlideUp/SlideUp';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ViewIcon, EyeOffIcon } from '@hugeicons/core-free-icons';
 import { useState, useEffect } from 'react';
 
-interface InputPasswordProp {
+interface InputPasswordProps {
     setPasswordValue: React.Dispatch<React.SetStateAction<string | null>>;
+    duration: string;
 }
 
-export default function InputPassword({setPasswordValue}: InputPasswordProp) {
+export default function InputPassword({setPasswordValue, duration}: InputPasswordProps) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [isToggled, setIsToggled] = useState(false);
@@ -30,48 +32,50 @@ export default function InputPassword({setPasswordValue}: InputPasswordProp) {
     return (
         <div className={styles.group}>
             <div className={styles.label}>Введите пароль:</div>
-            <div className={styles.wrapper}>
-                <input
-                    type={
-                        isToggled
-                        ? 'text'
-                        : 'password'
-                    }
-                    placeholder='qwerty123'
-                    className={styles.input}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className={styles.toggleWrapper}>
-                    <button
-                        className={styles.toggle}
-                        onClick={
+            <SlideUp duration={duration}>
+                <div className={styles.wrapper}>
+                    <input
+                        type={
                             isToggled
-                            ? () => setIsToggled(false)
-                            : () => setIsToggled(true)
+                            ? 'text'
+                            : 'password'
                         }
-                    >
-                        {
-                            isToggled
-                            ? (
-                                <HugeiconsIcon
-                                    icon={EyeOffIcon}
-                                    size={24}
-                                    strokeWidth={1.5}
-                                    className={styles.toggleIcon}
-                                />
-                            )
-                            : (
-                                <HugeiconsIcon
-                                    icon={ViewIcon}
-                                    size={24}
-                                    strokeWidth={1.5}
-                                    className={styles.toggleIcon}
-                                />
-                            )
-                        }
-                    </button>
+                        placeholder='qwerty123'
+                        className={styles.input}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <div className={styles.toggleWrapper}>
+                        <button
+                            className={styles.toggle}
+                            onClick={
+                                isToggled
+                                ? () => setIsToggled(false)
+                                : () => setIsToggled(true)
+                            }
+                        >
+                            {
+                                isToggled
+                                ? (
+                                    <HugeiconsIcon
+                                        icon={EyeOffIcon}
+                                        size={24}
+                                        strokeWidth={1.5}
+                                        className={styles.toggleIcon}
+                                    />
+                                )
+                                : (
+                                    <HugeiconsIcon
+                                        icon={ViewIcon}
+                                        size={24}
+                                        strokeWidth={1.5}
+                                        className={styles.toggleIcon}
+                                    />
+                                )
+                            }
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </SlideUp>
             {
                 error && (
                     <div className={styles.error}>Ошибка: пароль не может быть короче 8 символов.</div>
