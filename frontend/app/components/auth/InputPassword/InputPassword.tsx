@@ -1,17 +1,30 @@
 'use client';
 
-import styles from './InputPassword.module.css';
-import SlideUp from '../../animations/auth/SlideUp/SlideUp';
+import { useState, useEffect, ReactNode } from 'react';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ViewIcon, EyeOffIcon } from '@hugeicons/core-free-icons';
-import { useState, useEffect } from 'react';
+
+import styles from './InputPassword.module.css';
+import SlideUp from '../../animations/auth/SlideUp/SlideUp';
 
 interface InputPasswordProps {
     setPasswordValue: React.Dispatch<React.SetStateAction<string | null>>;
     duration: string;
+    labelText: string;
+    showError: boolean;
+    externalError?: boolean;
+    children?: ReactNode;
 }
 
-export default function InputPassword({setPasswordValue, duration}: InputPasswordProps) {
+export default function InputPassword({
+        setPasswordValue,
+        duration,
+        labelText,
+        showError,
+        externalError=false,
+        children=<></>
+    }: InputPasswordProps) {
+
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [isToggled, setIsToggled] = useState(false);
@@ -31,7 +44,7 @@ export default function InputPassword({setPasswordValue, duration}: InputPasswor
 
     return (
         <div className={styles.group}>
-            <div className={styles.label}>Введите пароль:</div>
+            <div className={styles.label}>{labelText}</div>
             <SlideUp duration={duration}>
                 <div className={styles.wrapper}>
                     <input
@@ -47,11 +60,7 @@ export default function InputPassword({setPasswordValue, duration}: InputPasswor
                     <div className={styles.toggleWrapper}>
                         <button
                             className={styles.toggle}
-                            onClick={
-                                isToggled
-                                ? () => setIsToggled(false)
-                                : () => setIsToggled(true)
-                            }
+                            onClick={() => setIsToggled(!isToggled)}
                         >
                             {
                                 isToggled
@@ -77,8 +86,13 @@ export default function InputPassword({setPasswordValue, duration}: InputPasswor
                 </div>
             </SlideUp>
             {
-                error && (
+                error && showError && (
                     <div className={styles.error}>Ошибка: пароль не может быть короче 8 символов.</div>
+                )
+            }
+            {
+                externalError && (
+                    <div className={styles.error}>{children}</div>
                 )
             }
         </div>

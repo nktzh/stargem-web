@@ -1,0 +1,46 @@
+.group {
+    gap: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.checkbox {
+    transition: .2s;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.checkbox:hover {
+    cursor: pointer;
+}
+
+.unchecked {
+    border: 1px solid #444444;
+    background-color: #242424;
+}
+.checked {
+    border: 1px solid #0616FF;
+    background-color: #0616FF;
+}
+
+.icon {
+    transition: .2s;
+    width: 24px;
+    height: 24px;
+    color: #FFFFFF;
+}
+
+.text {
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: 'Inter-Medium';
+}
+.link {
+    text-decoration: solid underline #FFFFFF 1px;
+    color: #FFFFFF;
+}

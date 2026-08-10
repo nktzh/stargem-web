@@ -1,8 +1,8 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import styles from './InputEmail.module.css';
 import SlideUp from '../../animations/auth/SlideUp/SlideUp';
-import { useState, useEffect } from 'react';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

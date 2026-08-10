@@ -68,3 +68,18 @@
 .toggle:hover {
     cursor: pointer;
 }
+
+.passwordRecoveryWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.passwordRecovery {
+    font-size: 16px;
+    color: #FFFFFF;
+    font-family: 'Inter-Medium';
+}
+.passwordRecovery:hover {
+    text-decoration: solid underline #FFFFFF 1px;
+    cursor: pointer;
+}

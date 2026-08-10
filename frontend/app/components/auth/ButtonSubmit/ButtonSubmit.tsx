@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import styles from './ButtonSubmit.module.css';
 import SlideUp from '../../animations/auth/SlideUp/SlideUp';
-import { useState } from 'react';
 
 interface ButtonSubmitProps {
     disabled: boolean;
@@ -23,6 +23,7 @@ export default function ButtonSubmit({disabled, text, duration}: ButtonSubmitPro
                             styles.disabled
                         )}
                     `}
+                    disabled={disabled}
                 >{text}</button>
             </SlideUp>
             {

@@ -1,25 +1,64 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+
 import styles from './Auth.module.css';
+
 import InputEmail from '../components/auth/InputEmail/InputEmail';
 import InputPassword from '../components/auth/InputPassword/InputPassword';
 import ButtonSubmit from '../components/auth/ButtonSubmit/ButtonSubmit';
+import InputComfirmedPassword from '../components/auth/InputComfirmedPassword/InputComfirmedPassword';
+import InputName from '../components/auth/InputName/InputName';
+import PrivacyPolicy from '../components/auth/PrivacyPolicy/PrivacyPolicy';
+
 import SlideUp from '../components/animations/auth/SlideUp/SlideUp';
-import { useState, useEffect } from 'react';
 
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
-    const [emailValue, setEmailValue] = useState<string | null>(null);
-    const [passwordValue, setPasswordValue] = useState<string | null>(null);
     const [disabledStatus, setDisabledStatus] = useState(true);
 
+    const [emailValue, setEmailValue] = useState<string | null>(null);
+    const [passwordValue, setPasswordValue] = useState<string | null>(null);
+
+    const [nameValue, setNameValue] = useState<string | null>(null);
+    const [comfirmedPasswordValue, setComfirmedPasswordValue] = useState<string | null>(null);
+    const [privacyPolicyValue, setPrivacyPolicyValue] = useState<boolean | null>(null);
+
     useEffect(() => {
-        if (emailValue && passwordValue) {
+        setDisabledStatus(true);
+    }, [isLogin])
+
+    useEffect(() => {
+        if (isLogin && emailValue && passwordValue) {
             setDisabledStatus(false);
         } else {
             setDisabledStatus(true);
         }
-    }, [emailValue, passwordValue]);
+    }, [
+        isLogin,
+        emailValue,
+        passwordValue
+    ]);
+
+    useEffect(() => {
+        if (
+            !isLogin
+            && nameValue
+            && emailValue
+            && comfirmedPasswordValue
+            && privacyPolicyValue
+        ) {
+            setDisabledStatus(false);
+        } else {
+            setDisabledStatus(true);
+        }
+    }, [
+        isLogin,
+        nameValue,
+        emailValue,
+        comfirmedPasswordValue,
+        privacyPolicyValue
+    ])
 
     return (
         <div className={styles.container}>
@@ -27,6 +66,7 @@ export default function Auth() {
                 <img
                     src='/logo.svg'
                     alt='Логотип Stargem'
+                    title='Где мысли превращаются в код.'
                     className={styles.logo}
                 />
                 <div className={styles.wrapper}>
@@ -48,14 +88,44 @@ export default function Auth() {
                                 </SlideUp>
                             </div>
                         </div>
+                        {
+                            !isLogin && (
+                                <InputName
+                                    duration='0.4s'
+                                    setNameValue={setNameValue}
+                                />
+                            )
+                        }
                         <InputEmail
                             setEmailValue={setEmailValue}
                             duration='0.4s'
                         />
-                        <InputPassword
-                            setPasswordValue={setPasswordValue}
-                            duration='0.6s'
-                        />
+                        {
+                            isLogin
+                            ? (
+                                <InputPassword
+                                    setPasswordValue={setPasswordValue}
+                                    duration='0.6s'
+                                    labelText='Введите пароль:'
+                                    showError={true}
+                                />
+                            )
+                            : (
+                                <InputComfirmedPassword setComfirmedPassword={setComfirmedPasswordValue}/>
+                            )
+                        }
+                        {
+                            isLogin && (
+                                <div className={styles.passwordRecoveryWrapper}>
+                                    <div className={styles.passwordRecovery}>Забыли пароль?</div>
+                                </div>
+                            )
+                        }
+                        {
+                            !isLogin && (
+                                <PrivacyPolicy setPrivacyPolicyValue={setPrivacyPolicyValue}/>
+                            )
+                        }
                         <ButtonSubmit
                             disabled={disabledStatus}
                             text={

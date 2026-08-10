@@ -1,7 +1,7 @@
 'use client';
 
-import styles from './SlideUp.module.css';
 import { ReactNode, useState, useEffect } from 'react';
+import styles from './SlideUp.module.css';
 
 interface SlideUpProps {
     duration: string;
