@@ -24,7 +24,7 @@ export default function InputName({duration, setNameValue}: InputNameProps) {
             setError(false);
             setNameValue(name);
         }
-    }, [name])
+    }, [name]);
 
     return (
         <div className={styles.group}>

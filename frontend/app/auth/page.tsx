@@ -26,7 +26,7 @@ export default function Auth() {
 
     useEffect(() => {
         setDisabledStatus(true);
-    }, [isLogin])
+    }, [isLogin]);
 
     useEffect(() => {
         if (isLogin && emailValue && passwordValue) {
@@ -58,7 +58,7 @@ export default function Auth() {
         emailValue,
         comfirmedPasswordValue,
         privacyPolicyValue
-    ])
+    ]);
 
     return (
         <div className={styles.container}>

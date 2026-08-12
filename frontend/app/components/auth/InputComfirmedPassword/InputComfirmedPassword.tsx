@@ -20,7 +20,7 @@ export default function InputComfirmedPassword({setComfirmedPassword}: Comfirmed
             setError(true);
             setComfirmedPassword(null);
         }
-    }, [passwordValue, comfirmedPasswordValue])
+    }, [passwordValue, comfirmedPasswordValue]);
 
     return (
         <>
