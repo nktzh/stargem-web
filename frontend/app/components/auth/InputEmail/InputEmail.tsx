@@ -35,6 +35,7 @@ export default function InputEmail({setEmailValue, duration}: InputEmailProps) {
                 <input
                     type='email'
                     placeholder='pochta@email.ru'
+                    maxLength={256}
                     className={styles.input}
                     onChange={(e) => setEmail(e.target.value)}
                 />

@@ -33,6 +33,7 @@ export default function InputName({duration, setNameValue}: InputNameProps) {
                 <input
                     type='text'
                     placeholder='Никита'
+                    maxLength={256}
                     className={styles.input}
                     onChange={(e) => setName(e.target.value)}
                 />

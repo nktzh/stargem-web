@@ -54,6 +54,7 @@ export default function InputPassword({
                             : 'password'
                         }
                         placeholder='qwerty123'
+                        maxLength={1024}
                         className={styles.input}
                         onChange={(e) => setPassword(e.target.value)}
                     />

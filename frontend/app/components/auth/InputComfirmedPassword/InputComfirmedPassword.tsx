@@ -27,13 +27,13 @@ export default function InputComfirmedPassword({setComfirmedPassword}: Comfirmed
             <InputPassword
                 setPasswordValue={setPasswordValue}
                 labelText='Придумайте пароль:'
-                duration='0.6s'
+                duration='0.3s'
                 showError={true}
             />
             <InputPassword
                 setPasswordValue={setComfirmedPasswordValue}
                 labelText='Повторите пароль:'
-                duration='0.8s'
+                duration='0.4s'
                 showError={false}
                 externalError={error}
             >

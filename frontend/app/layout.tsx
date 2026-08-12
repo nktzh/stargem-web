@@ -15,6 +15,7 @@ export default function RootLayout({
 		<html lang='ru'>
 			<body>
 				{children}
+				<div id='modalContainer'></div>
 			</body>
 		</html>
 	);

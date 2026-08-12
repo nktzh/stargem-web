@@ -13,6 +13,8 @@ import PrivacyPolicy from '../components/auth/PrivacyPolicy/PrivacyPolicy';
 
 import SlideUp from '../components/animations/auth/SlideUp/SlideUp';
 
+import ModalRecovery from '../components/auth/ModalRecovery/ModalRecovery';
+
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
     const [disabledStatus, setDisabledStatus] = useState(true);
@@ -23,6 +25,12 @@ export default function Auth() {
     const [nameValue, setNameValue] = useState<string | null>(null);
     const [comfirmedPasswordValue, setComfirmedPasswordValue] = useState<string | null>(null);
     const [privacyPolicyValue, setPrivacyPolicyValue] = useState<boolean | null>(null);
+
+    const [recoveryModal, setRecoveryModal] = useState(false);
+
+    function close() {
+        setRecoveryModal(false);
+    }
 
     useEffect(() => {
         setDisabledStatus(true);
@@ -82,7 +90,7 @@ export default function Auth() {
                             <div className={styles.caption}>
                                 <SlideUp
                                     key={isLogin ? 'login' : 'register'}
-                                    duration='0.2s'
+                                    duration='0.1s'
                                 >
                                     {isLogin ? 'Рады видеть Вас снова.' : 'Добро пожаловать в Stargem!'}
                                 </SlideUp>
@@ -91,21 +99,21 @@ export default function Auth() {
                         {
                             !isLogin && (
                                 <InputName
-                                    duration='0.4s'
+                                    duration='0.2s'
                                     setNameValue={setNameValue}
                                 />
                             )
                         }
                         <InputEmail
                             setEmailValue={setEmailValue}
-                            duration='0.4s'
+                            duration='0.2s'
                         />
                         {
                             isLogin
                             ? (
                                 <InputPassword
                                     setPasswordValue={setPasswordValue}
-                                    duration='0.6s'
+                                    duration='0.3s'
                                     labelText='Введите пароль:'
                                     showError={true}
                                 />
@@ -117,8 +125,18 @@ export default function Auth() {
                         {
                             isLogin && (
                                 <div className={styles.passwordRecoveryWrapper}>
-                                    <div className={styles.passwordRecovery}>Забыли пароль?</div>
+                                    <div
+                                        className={styles.passwordRecovery}
+                                        onClick={() => setRecoveryModal(!recoveryModal)}
+                                    >
+                                    Забыли пароль?
+                                    </div>
                                 </div>
+                            )
+                        }
+                        {
+                            recoveryModal && (
+                                <ModalRecovery close={close}/>
                             )
                         }
                         {
@@ -133,7 +151,7 @@ export default function Auth() {
                                 ? 'Войти'
                                 : 'Зарегистрироваться'
                             }
-                            duration='0.8s'
+                            duration='0.4s'
                         />
                     </div>
                     <div className={styles.toggleText}>
