@@ -15,6 +15,8 @@ import SlideUp from '../components/animations/auth/SlideUp/SlideUp';
 
 import ModalRecovery from '../components/auth/ModalRecovery/ModalRecovery';
 
+import PopUp from '../components/auth/PopUp/PopUp';
+
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
     const [disabledStatus, setDisabledStatus] = useState(true);
@@ -27,6 +29,53 @@ export default function Auth() {
     const [privacyPolicyValue, setPrivacyPolicyValue] = useState<boolean | null>(null);
 
     const [recoveryModal, setRecoveryModal] = useState(false);
+
+    const [popUp, setPopUp] = useState(
+        {
+            show: false,
+            success: true,
+            text:
+            <>
+                Регистрация прошла успешно:<br />
+                можете закрыть эту сраницу,<br />
+                продолжение ждет Вас на почте.
+            </>,
+            showClose: false
+        }
+    );
+
+    function closePopUp() {
+        setPopUp(
+            prev => ({
+                ...prev,
+                show: false
+            })
+        );
+    }
+
+    function submit() {
+        if (isLogin) {
+            setPopUp({
+                show: true,
+                success: false,
+                text:
+                <>
+                    Ошибка входа: неправильный<br />
+                    логин или пароль.<br />
+                    Попробуйте ввести данные ещё раз.
+                </>,
+                showClose: true
+            });
+        } else {
+            setPopUp(
+                prev => ({
+                    ...prev,
+                    show: true,
+                    showClose: false
+                })
+            );
+        }
+    }
 
     function close() {
         setRecoveryModal(false);
@@ -152,7 +201,18 @@ export default function Auth() {
                                 : 'Зарегистрироваться'
                             }
                             duration='0.4s'
+                            onclick={submit}
                         />
+                        {
+                            popUp.show && (
+                                <PopUp
+                                    success={popUp.success}
+                                    text={popUp.text}
+                                    showClose={popUp.showClose}
+                                    close={closePopUp}
+                                />
+                            )
+                        }
                     </div>
                     <div className={styles.toggleText}>
                         {

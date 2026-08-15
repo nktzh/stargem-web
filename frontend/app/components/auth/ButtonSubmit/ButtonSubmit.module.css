@@ -29,9 +29,3 @@
 .disabled:hover {
     cursor: not-allowed;
 }
-
-.error {
-    font-size: 16px;
-    color: #FF2C2C;
-    font-family: 'Inter-Medium';
-}

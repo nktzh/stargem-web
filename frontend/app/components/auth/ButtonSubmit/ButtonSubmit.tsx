@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import styles from './ButtonSubmit.module.css';
 import SlideUp from '../../animations/auth/SlideUp/SlideUp';
 
@@ -8,11 +7,10 @@ interface ButtonSubmitProps {
     disabled: boolean;
     text: string;
     duration: string;
+    onclick: () => void;
 }
 
-export default function ButtonSubmit({disabled, text, duration}: ButtonSubmitProps) {
-    const [error, setError] = useState(false);
-
+export default function ButtonSubmit({disabled, text, duration, onclick}: ButtonSubmitProps) {
     return (
         <div className={styles.group}>
             <SlideUp duration={duration}>
@@ -24,13 +22,9 @@ export default function ButtonSubmit({disabled, text, duration}: ButtonSubmitPro
                         )}
                     `}
                     disabled={disabled}
+                    onClick={() => onclick()}
                 >{text}</button>
             </SlideUp>
-            {
-                error && (
-                    <div className={styles.error}>Произошла ошибка при входе, обратитесь в поддержку.</div>
-                )
-            }
         </div>
     );
 }

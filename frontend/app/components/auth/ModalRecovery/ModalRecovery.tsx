@@ -9,17 +9,40 @@ import styles from './ModalRecovery.module.css';
 
 import InputEmail from '../InputEmail/InputEmail';
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
+import PopUp from '../PopUp/PopUp';
 
-interface ModalProp {
+interface ModalRecoveryProp {
     close: () => void;
 }
 
-export default function Modal({close}: ModalProp) {
+export default function ModalRecovery({close}: ModalRecoveryProp) {
     const [email, setEmail] = useState<string | null>(null);
 
-    useEffect(() => {
-        console.log(email);
-    }, [])
+    const [popUp, setPopUp] = useState(
+        {
+            show: false,
+            success: false,
+            text:
+            <>
+                Ошибка: аккаунт с данной почтой не найден.
+            </>,
+            showClose: true
+        }
+    );
+
+    function sendRecoveryLink() {
+        setPopUp(prev => ({
+            ...prev,
+            show: true
+        }));
+    }
+
+    function closePopUp() {
+        setPopUp(prev => ({
+            ...prev,
+            show: false
+        }));
+    }
 
     return createPortal(
         <div className={styles.wrapper}>
@@ -52,7 +75,18 @@ export default function Modal({close}: ModalProp) {
                     }
                     text='Получить ссылку на почту'
                     duration='0.2s'
+                    onclick={() => sendRecoveryLink()}
                 />
+                {
+                    popUp.show && (
+                        <PopUp
+                            success={popUp.success}
+                            text={popUp.text}
+                            showClose={popUp.showClose}
+                            close={closePopUp}
+                        />
+                    )
+                }
             </div>
         </div>,
         document.getElementById('modalContainer')!

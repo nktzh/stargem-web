@@ -16,6 +16,7 @@ export default function RootLayout({
 			<body>
 				{children}
 				<div id='modalContainer'></div>
+				<div id='popUpContainer'></div>
 			</body>
 		</html>
 	);
