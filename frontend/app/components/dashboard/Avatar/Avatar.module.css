@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    font-size: 72px;
+    color: #FFFFFF;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter-Bold';
+}
+
+.grey1 {
+    background: linear-gradient(
+        45deg,
+        rgba(52, 52, 52, 1) 0%,
+        rgba(136, 136, 136, 1) 100%
+    );
+}
