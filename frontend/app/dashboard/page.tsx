@@ -17,6 +17,8 @@ import ButtonLeftbar from '../components/dashboard/ButtonLeftbar/ButtonLeftbar';
 import DashboardPage from '../components/dashboard/DashboardPage/DashboardPage';
 import ButtonAuthorize from '../components/dashboard/ButtonAuthorize/ButtonAuthorize';
 
+import SlideUp from '../components/animations/SlideUp/SlideUp';
+
 export default function Dashboard() {
     const [activePage, setActivePage] = useState('Главная');
 
@@ -85,14 +87,16 @@ export default function Dashboard() {
                     <div className={styles.leftbarButtons}>
                         {
                             leftbarButtons.map((button, index) => (
-                                <ButtonLeftbar
-                                    key={index}
-                                    label={button.label}
-                                    active={button.label === activePage}
-                                    setpage={setPage}
-                                >
-                                    {button.icon}
-                                </ButtonLeftbar>
+                                <SlideUp key={index} duration={(((index + 1) * 0.1).toString() + 's')}>
+                                    <ButtonLeftbar
+                                        key={index}
+                                        label={button.label}
+                                        active={button.label === activePage}
+                                        setpage={setPage}
+                                    >
+                                        {button.icon}
+                                    </ButtonLeftbar>
+                                </SlideUp>
                             ))
                         }
                     </div>

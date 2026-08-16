@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import styles from './InputName.module.css';
-import SlideUp from '../../animations/auth/SlideUp/SlideUp';
+import SlideUp from '../../animations/SlideUp/SlideUp';
 
 interface InputNameProps {
     setNameValue: React.Dispatch<React.SetStateAction<string | null>>;

@@ -11,7 +11,7 @@ import InputComfirmedPassword from '../components/auth/InputComfirmedPassword/In
 import InputName from '../components/auth/InputName/InputName';
 import PrivacyPolicy from '../components/auth/PrivacyPolicy/PrivacyPolicy';
 
-import SlideUp from '../components/animations/auth/SlideUp/SlideUp';
+import SlideUp from '../components/animations/SlideUp/SlideUp';
 
 import ModalRecovery from '../components/auth/ModalRecovery/ModalRecovery';
 

@@ -5,7 +5,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { ViewIcon, EyeOffIcon } from '@hugeicons/core-free-icons';
 
 import styles from './InputPassword.module.css';
-import SlideUp from '../../animations/auth/SlideUp/SlideUp';
+import SlideUp from '../../animations/SlideUp/SlideUp';
 
 interface InputPasswordProps {
     setPasswordValue: React.Dispatch<React.SetStateAction<string | null>>;

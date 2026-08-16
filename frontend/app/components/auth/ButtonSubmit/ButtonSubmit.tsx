@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './ButtonSubmit.module.css';
-import SlideUp from '../../animations/auth/SlideUp/SlideUp';
+import SlideUp from '../../animations/SlideUp/SlideUp';
 
 interface ButtonSubmitProps {
     disabled: boolean;
