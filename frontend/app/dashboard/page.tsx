@@ -16,6 +16,7 @@ import Avatar from '../components/dashboard/Avatar/Avatar';
 import ButtonLeftbar from '../components/dashboard/ButtonLeftbar/ButtonLeftbar';
 import DashboardPage from '../components/dashboard/DashboardPage/DashboardPage';
 import ButtonAuthorize from '../components/dashboard/ButtonAuthorize/ButtonAuthorize';
+import ButtonLogOut from '../components/dashboard/ButtonLogOut/ButtonLogOut';
 
 import SlideUp from '../components/animations/SlideUp/SlideUp';
 
@@ -100,10 +101,13 @@ export default function Dashboard() {
                             ))
                         }
                     </div>
+                    <SlideUp duration={(((leftbarButtons.length + 1) * 0.1).toString() + 's')}>
+                        <ButtonLogOut onclick={() => {}}/>
+                    </SlideUp>
                 </div>
                 <div className={styles.content}>
                     {
-                        (activePage == 'Главная') && (
+                        (activePage === 'Главная') && (
                             <DashboardPage title='Stargem. Добро пожаловать, Никита.'>
                                 <ButtonAuthorize onclick={() => {}} />
                             </DashboardPage>
