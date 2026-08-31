@@ -1,0 +1,17 @@
+.group {
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.success {
+    font-size: 16px;
+    color: #5CE65C;
+    font-family: 'Inter-Medium';
+}
+
+.error {
+    font-size: 16px;
+    color: #FF2C2C;
+    font-family: 'Inter-Medium';
+}

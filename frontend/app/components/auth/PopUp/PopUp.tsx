@@ -10,10 +10,11 @@ interface PopUpProps {
     success: boolean;
     text: ReactNode;
     showClose: boolean;
+    children?: ReactNode;
     close: (() => void);
 }
 
-export default function PopUp({success, text, showClose, close}: PopUpProps) {
+export default function PopUp({success, text, showClose, children, close}: PopUpProps) {
     return createPortal(
         <div className={styles.wrapper}>
             <div className={styles.popup}>
@@ -47,6 +48,7 @@ export default function PopUp({success, text, showClose, close}: PopUpProps) {
                         >Попробовать еще раз</button>
                     )
                 }
+                {children}
             </div>
         </div>,
         document.getElementById('popUpContainer')!

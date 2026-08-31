@@ -6,16 +6,18 @@ import styles from './Auth.module.css';
 
 import InputEmail from '../components/auth/InputEmail/InputEmail';
 import InputPassword from '../components/auth/InputPassword/InputPassword';
-import ButtonSubmit from '../components/auth/ButtonSubmit/ButtonSubmit';
 import InputComfirmedPassword from '../components/auth/InputComfirmedPassword/InputComfirmedPassword';
 import InputName from '../components/auth/InputName/InputName';
+
+import ButtonSubmit from '../components/auth/ButtonSubmit/ButtonSubmit';
+import ButtonSend from '../components/auth/ButtonSend/ButtonSend';
+
+import ModalRecovery from '../components/auth/ModalRecovery/ModalRecovery';
+import PopUp from '../components/auth/PopUp/PopUp';
+
 import PrivacyPolicy from '../components/auth/PrivacyPolicy/PrivacyPolicy';
 
 import SlideUp from '../components/animations/SlideUp/SlideUp';
-
-import ModalRecovery from '../components/auth/ModalRecovery/ModalRecovery';
-
-import PopUp from '../components/auth/PopUp/PopUp';
 
 export default function Auth() {
     const [isLogin, setIsLogin] = useState(true);
@@ -30,6 +32,8 @@ export default function Auth() {
 
     const [recoveryModal, setRecoveryModal] = useState(false);
 
+    const [showSendButton, setShowSendButton] = useState(false);
+
     const [popUp, setPopUp] = useState(
         {
             show: false,
@@ -38,7 +42,8 @@ export default function Auth() {
             <>
                 Регистрация прошла успешно:<br />
                 можете закрыть эту сраницу,<br />
-                продолжение ждет Вас на почте.
+                ссылка с подверждением<br />
+                регистрации ждет Вас на почте.
             </>,
             showClose: false
         }
@@ -74,6 +79,7 @@ export default function Auth() {
                     showClose: false
                 })
             );
+            setShowSendButton(true);
         }
     }
 
@@ -210,7 +216,13 @@ export default function Auth() {
                                     text={popUp.text}
                                     showClose={popUp.showClose}
                                     close={closePopUp}
-                                />
+                                >
+                                    {
+                                        showSendButton && (
+                                            <ButtonSend />
+                                        )
+                                    }
+                                </PopUp>
                             )
                         }
                     </div>
